@@ -25,11 +25,20 @@ export async function signup(prevState, formData) {
     }
   }
 
-  const hashedPassword = hashUserPassword(password)
-
-  const id = createUser(username, hashedPassword)
-
-  await createAuthSession(id)
+  try {
+    const hashedPassword = hashUserPassword(password)
+    const id = createUser(username, hashedPassword)
+    await createAuthSession(id)
+  } catch (error) {
+    if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+      return {
+        errors: {
+          username: "This username already exists"
+        }
+      }
+    }
+    throw error
+  }
 
   redirect("/")
 }
