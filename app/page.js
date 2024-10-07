@@ -1,5 +1,3 @@
-
-
 export default function Home() {
   return (
     <div className="grid grid-cols-1 gap-4 place-items-center justify-center mt-8">
