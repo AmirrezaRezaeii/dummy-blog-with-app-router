@@ -1,6 +1,8 @@
 "use server";
 
-import { redirect } from "next/dist/server/api-utils";
+import { hashUserPassword } from "@/lib/hash";
+import { createUser } from "@/lib/user";
+import { redirect } from "next/navigation";
 
 export async function signup(prevState, formData) {
   const username = formData.get("username");
@@ -21,6 +23,10 @@ export async function signup(prevState, formData) {
         errors: errors
     }
   }
+
+  const hashedPassword = hashUserPassword(password)
+
+  createUser(username, hashedPassword)
 
   redirect("/")
 }
