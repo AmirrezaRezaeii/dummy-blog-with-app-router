@@ -1,5 +1,6 @@
 "use server";
 
+import { createAuthSession } from "@/lib/auth";
 import { hashUserPassword } from "@/lib/hash";
 import { createUser } from "@/lib/user";
 import { redirect } from "next/navigation";
@@ -26,7 +27,9 @@ export async function signup(prevState, formData) {
 
   const hashedPassword = hashUserPassword(password)
 
-  createUser(username, hashedPassword)
+  const id = createUser(username, hashedPassword)
+
+  await createAuthSession(id)
 
   redirect("/")
 }
