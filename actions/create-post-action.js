@@ -8,8 +8,10 @@ export async function createPost(prevState, formData) {
   const title = formData.get("title");
   const content = formData.get("content");
   const tags = formData.get("tags");
-  //   const author = getLoggedInUser();
-  console.log(title, content, tags);
+  
+  const author = await getLoggedInUser();
+  const authorId = author.id;
+  console.log(author, authorId);
 
   let errors = {};
 
@@ -35,8 +37,8 @@ export async function createPost(prevState, formData) {
     await storePost({
       title,
       content,
+      userId: authorId,
       tags,
-      userId: 1,
     });
   } catch (error) {
     throw error;
