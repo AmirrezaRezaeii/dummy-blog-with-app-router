@@ -9,8 +9,7 @@ export default async function AllPosts() {
 
   const result = await verifyAuth();
 
-  const username = getUserById(result.user.id).username
-
+  const username = getUserById(result.user.id).username;
 
   return (
     <div>
@@ -25,8 +24,11 @@ export default async function AllPosts() {
           </Link>
         ))}
       </ul>
-      <h2 className="text-3xl font-bold text-center">Posts by user: {username}</h2>
+      <h2 className="text-3xl font-bold text-center">
+        Posts by user: {username}
+      </h2>
       <AllStoredPosts />
+      
     </div>
   );
 }
