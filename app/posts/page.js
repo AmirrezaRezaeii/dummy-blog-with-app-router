@@ -13,7 +13,7 @@ export default async function AllPosts() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center">All Posts by Api</h1>
+      <h1 className="text-3xl font-bold text-center">Posts by API</h1>
       <ul className="grid grid-cols-4 gap-8 p-8">
         {data.posts.map((post) => (
           <Link href={`/posts/${post.id}`} key={post.id}>
