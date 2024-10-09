@@ -1,4 +1,5 @@
 import AdminPanelSidebar from "@/components/admin-panel-sidebar";
+import AllStoredPosts from "@/components/all-posts/all-stored-posts";
 import { verifyAuth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -15,6 +16,7 @@ export default async function AdminPanelPage() {
         <h1 className="flex justify-center text-4xl font-bold mt-8">
           Admin Panel
         </h1>
+        <AllStoredPosts />
       </div>
       <div className="col-span-3">
         <AdminPanelSidebar />

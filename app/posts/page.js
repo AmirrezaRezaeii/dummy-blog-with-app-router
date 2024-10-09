@@ -4,8 +4,6 @@ export default async function AllPosts() {
   const res = await fetch("https://dummyjson.com/posts");
   const data = await res.json();
 
-  console.log(data);
-
   return (
     <ul className="grid grid-cols-4 gap-8 p-8">
       {data.posts.map((post) => (

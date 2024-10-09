@@ -11,7 +11,7 @@ export async function createPost(prevState, formData) {
   
   const author = await getLoggedInUser();
   const authorId = author.id;
-  console.log(author, authorId);
+  // console.log(author, authorId);
 
   let errors = {};
 
