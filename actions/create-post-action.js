@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export async function createPost(prevState, formData) {
   const title = formData.get("title");
   const content = formData.get("content");
-  const tags = formData.get("tags");
+  const tags = formData.get("tags").replace(/\s+/g, " - ");
   
   const author = await getLoggedInUser();
   const authorId = author.id;
@@ -16,7 +16,7 @@ export async function createPost(prevState, formData) {
 
   if (title.trim() === "") {
     errors.title = "Title is required";
-  }
+  }  
 
   if (content.trim() === "") {
     errors.content = "Content is required";
@@ -42,6 +42,8 @@ export async function createPost(prevState, formData) {
   } catch (error) {
     throw error;
   }
+
+
 
   redirect("/admin-panel");
 }

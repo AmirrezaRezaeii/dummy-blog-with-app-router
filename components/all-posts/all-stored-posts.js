@@ -15,7 +15,7 @@ export default async function AllStoredPosts() {
           <p className="">{post.tags}</p>
           <div className="flex justify-between items-center">
             <Link className="bg-sky-900 text-white p-2 rounded  hover:bg-slate-800" href={`/admin-panel/${post.id}`}>See Post</Link>
-            <Link href="/">Edit</Link>
+            <Link href={`/admin-panel/${post.id}/edit`}>Edit</Link>
           </div>
         </li>
       ))}
