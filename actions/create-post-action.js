@@ -1,6 +1,6 @@
 "use server";
 
-import { storePost } from "@/lib/posts";
+import { storePost } from "@/lib/db";
 import { getLoggedInUser } from "@/lib/user";
 import { redirect } from "next/navigation";
 
@@ -8,8 +8,8 @@ export async function createPost(prevState, formData) {
   const title = formData.get("title");
   const content = formData.get("content");
   const tags = formData.get("tags");
-//   const author = getLoggedInUser();
-  console.log(title, content, tags)
+  //   const author = getLoggedInUser();
+  console.log(title, content, tags);
 
   let errors = {};
 
@@ -31,13 +31,16 @@ export async function createPost(prevState, formData) {
     };
   }
 
-  storePost({
-    title,
-    content,
-    tags,
-    userId: 1,
-  });
-
+  try {
+    await storePost({
+      title,
+      content,
+      tags,
+      userId: 1,
+    });
+  } catch (error) {
+    throw error;
+  }
 
   redirect("/admin-panel");
 }
