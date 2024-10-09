@@ -28,8 +28,8 @@ export default function AuthForm({ mode }) {
           className="bg-slate-400 placeholder-white pl-2 py-1"
         />
         <button className="bg-slate-100 hover:bg-slate-500">Submit</button>
-        {mode === "login" && <Link href="/signup/?mode=signup" className="text-white">Signup if you already have an account</Link>}
-        {mode === "signup" && <Link href="/signup/?mode=login" className="text-white">Login if you don't have any account</Link>}
+        {mode === "login" && <Link href="/signup/?mode=signup" className="text-white">Signup if you don't have any account</Link>}
+        {mode === "signup" && <Link href="/signup/?mode=login" className="text-white">Login if you already have an account</Link>}
       </form>
       {formState.errors && (
         <ul>
