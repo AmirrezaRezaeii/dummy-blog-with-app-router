@@ -1,9 +1,14 @@
 import { getPosts } from "@/lib/db";
 import Link from "next/link";
 import DeleteBtn from "../delete-button";
+import { getPostsByAuthor } from "@/lib/posts";
+import { verifyAuth } from "@/lib/auth";
 
 export default async function AllStoredPosts() {
-  const posts = await getPosts();
+  const result = await verifyAuth()
+
+  const posts = await getPostsByAuthor(result.user.id);
+
 
   return (
     <ul className="grid grid-cols-4 gap-8 p-8">

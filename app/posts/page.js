@@ -1,5 +1,6 @@
 import AllStoredPosts from "@/components/all-posts/all-stored-posts";
 import { verifyAuth } from "@/lib/auth";
+import { getPostsByAuthor } from "@/lib/posts";
 import { getUserById } from "@/lib/user";
 import Link from "next/link";
 
@@ -14,6 +15,7 @@ export default async function AllPosts() {
   if (result.user) {
     username = getUserById(result.user.id).username;
   }
+
 
   return (
     <div>
