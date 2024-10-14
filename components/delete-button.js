@@ -8,7 +8,7 @@ export default function DeleteBtn({ postId }) {
   return (
     <form action={formAction}>
       <input name="postId" value={postId} readOnly className="hidden" />
-      <button className="bg-red-500">delete</button>
+      <button className="bg-red-400 p-2 rounded hover:bg-rose-600">delete</button>
     </form>
   );
 }
