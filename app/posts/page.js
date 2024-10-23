@@ -16,6 +16,7 @@ export default async function AllPosts() {
     username = getUserById(result.user.id).username;
   }
 
+  
 
   return (
     <div>
