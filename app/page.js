@@ -1,3 +1,5 @@
+import Faq from "@/components/faq/faq";
+
 export default function Home() {
   return (
     <div className="grid grid-cols-1 gap-4 place-items-center justify-center mt-8">
@@ -17,6 +19,7 @@ export default function Home() {
           <p>Tailwind for styling</p>
         </div>
       </div>
+      <Faq />
     </div>
   );
 }
